@@ -1,0 +1,84 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package konversisuhu;
+
+import java.util.Scanner;
+/**
+ *
+ * @author User
+ */
+class rumus{
+    double celcius;
+    
+    public rumus(double celcius){
+       this.celcius=celcius; 
+    }
+    double farenheit(){
+        return (celcius * 1.8 +32);
+    }
+    double reamur(){
+        return (celcius *0.8);
+    }
+    double kelvin(){
+        return (celcius+273.15);
+    }
+    String kondisiair(){
+        if(celcius <=0){
+            return "Beku";
+        }else if (celcius >=100){
+            return "Mendidih";
+        }else {
+            return "Normal";
+        }
+    }
+}
+        
+public class KonversiSuhu {
+
+    /**
+     * @param args the command line arguments
+     */
+    
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int opsi;
+        double suhuawal;
+        System.out.println("------------------");
+        System.out.println("| Program Konversi Suhu Air|");
+        System.out.println("------------------");
+        System.out.print("Input data dlm Celcius    = ");
+        suhuawal = input.nextInt();
+        
+        do{
+            rumus suhuakhir=new rumus(suhuawal);
+            System.out.println("");
+            System.out.println("Opsi");
+            System.out.println("------------------");
+            System.out.println("1. Lihat Data ");
+            System.out.println("2. Edit Data Konversi");
+            System.out.println("3. Exit");
+            System.out.println("Pilih   : ");
+            opsi=input.nextInt();
+            if(opsi==1){
+                System.out.println("");
+                System.out.println("Suhu dalam Celcius  : " + suhuawal + "°C");
+                System.out.println("Dalam Farenheit : " + suhuakhir.farenheit() + "°F");
+                System.out.println("Dalam Reamur : " + suhuakhir.reamur() + "°R");
+                System.out.println("Dalam Kelvin : " + suhuakhir.kelvin() + "K");
+                System.out.println("Kondisi Air " + suhuakhir.kondisiair());
+            }else if (opsi==2){
+                System.out.println("Input Data");
+                System.out.println("------------------");
+                System.out.println("Suhu Dalam Celcius  : ");
+                suhuawal = input.nextInt();
+            }else if (opsi > 3 || opsi < 1){
+                System.out.println("opsi tidak ada, masukkan opsi yang benar!");
+            }
+        } while (opsi !=3);
+        
+    }
+    
+}
